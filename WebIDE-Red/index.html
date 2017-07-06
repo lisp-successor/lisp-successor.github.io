@@ -61,46 +61,6 @@
     <footer>
       <p><small></small></p>
     </footer>
-    
-    <label id="lbl_url"></label>
-    <br />
-    <input id="txt_name" type="text" />
-    <br />
-    <input id="txt_info" type="text" />
-    <br />
-    <input id="btn_post" value="post" type="button" />
-    <label id="lbl_progress"></label>
-    <div id="result"></div>
-    <script>
-        function testPost() {
-            var temp_url = lbl_url.innerHTML;
-            var xhr = new XMLHttpRequest();
-            //XMLHttpRequest overrideMimeType setRequestHeader
-            xhr.open('GET', temp_url, true);
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-            xhr.setRequestHeader("Content-Type", "application/octet-stream");
-            xhr.responseType = "arraybuffer";
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.response.length);
-                }
-            };
-            xhr.onprogress = function (event) {
-                if (event.lengthComputable) {
-                    lbl_progress.innerHTML = '(' + Math.ceil((event.loaded / event.total) * 100) + '% / ' + Math.ceil(event.total / 1024) + ' KB)';
-                } else {
-                    lbl_progress.innerHTML = '(' + Math.ceil(event.loaded / 1024) + ' / ? KB)';
-                }
-            }
-            xhr.send(null);
-        }
-        lbl_url.innerHTML = 'https://github.com/qtxie/red/zipball/MacOSX-GUI';
-      //lbl_url.innerHTML = 'https://codeload.github.com/qtxie/red/legacy.zip/MacOSX-GUI';
-      //lbl_url.innerHTML = 'https://codeload.github.com/red/red/legacy.zip/master';
-        btn_post.onclick = testPost;
-        txt_name.value = '';
-        txt_info.value = '';
-    </script>
-    
+
   </body>
 </html>
